@@ -33,3 +33,7 @@ bower.json
 
 # Ignore pow environment settings
 .powenv
+
+# specific files
+run_docker.bat
+docker_readme.txt
