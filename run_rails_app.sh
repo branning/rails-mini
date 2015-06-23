@@ -8,4 +8,4 @@ if [ "$#" -eq 0 ]; then
 fi
 
 cd "$1"
-docker run --name "$1"-container -p 8080:3000 -v $(pwd):/usr/src/app -w /usr/src/app -d "$1"
+docker run --name "$1"-container -p 3000:3000 -v $(pwd):/usr/src/app -w /usr/src/app -d "$1" rails server -p 3000 -b 0.0.0.0

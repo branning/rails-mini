@@ -1,1 +1,24 @@
-hello
+<h1>Users</h2>
+<table border=2 padding=10px>
+<tr>
+	<td><b>ID</b></td>
+	<td><b>Name</b></td>
+	<td><b>Items (Categories)</b></td>
+</tr>
+<% @users.each do |user| %>
+	<tr>
+	<td><%= user.id %></td>
+	<td><%= user.name %></td>
+	<td>
+		<% user.items.each do |item| %>
+		<%= item.name %>
+		&#40;
+			<% item.categories.each do |category| %>
+			<%= category.name %>
+			<% end %>
+		&#41;
+		<% end %>
+	</td>
+	</tr>
+<% end %>
+</table>

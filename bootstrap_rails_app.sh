@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # comment by @mazzolino https://registry.hub.docker.com/_/rails/
-# switch to pinned
+# switch to pinned version of Rails
 
 USAGE="Usage: $0 <your app name>"
 TAG="4.2"

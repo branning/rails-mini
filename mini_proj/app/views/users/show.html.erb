@@ -1,1 +1,8 @@
-<%= @user.name %>
+<p><%= @user.name %></p>
+<% @items.each do |item| %>
+<p><%= item.name %>: 
+	<% item.categories.each do |category| %>
+		<%= category.name %>
+	<% end %>
+</p>
+<% end %>
