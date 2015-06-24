@@ -11,13 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150623021304) do
+ActiveRecord::Schema.define(version: 20150624015831) do
 
-  create_table "categories", force: :cascade do |t|
+  create_table "categories", id: false, force: :cascade do |t|
+    t.integer  "category_id", null: false
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
+
+  add_index "categories", ["category_id"], name: "index_categories_on_category_id", unique: true
 
   create_table "item_categories", force: :cascade do |t|
     t.integer  "item_id"
@@ -29,11 +32,32 @@ ActiveRecord::Schema.define(version: 20150623021304) do
   add_index "item_categories", ["category_id"], name: "index_item_categories_on_category_id"
   add_index "item_categories", ["item_id"], name: "index_item_categories_on_item_id"
 
-  create_table "items", force: :cascade do |t|
+  create_table "items", id: false, force: :cascade do |t|
+    t.integer  "item_id",    null: false
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "items", ["item_id"], name: "index_items_on_item_id", unique: true
+
+  create_table "logins", force: :cascade do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
+  add_index "logins", ["email"], name: "index_logins_on_email", unique: true
+  add_index "logins", ["reset_password_token"], name: "index_logins_on_reset_password_token", unique: true
 
   create_table "user_items", force: :cascade do |t|
     t.integer  "user_id"
@@ -45,10 +69,13 @@ ActiveRecord::Schema.define(version: 20150623021304) do
   add_index "user_items", ["item_id"], name: "index_user_items_on_item_id"
   add_index "user_items", ["user_id"], name: "index_user_items_on_user_id"
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: false, force: :cascade do |t|
+    t.integer  "user_id",    null: false
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "users", ["user_id"], name: "index_users_on_user_id", unique: true
 
 end
