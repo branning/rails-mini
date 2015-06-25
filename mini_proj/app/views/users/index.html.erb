@@ -8,16 +8,14 @@
 <tr>
 	<td><b>ID</b></td>
 	<td><b>Name</b></td>
-	<td><b>Items (Categories)</b></td>
+	<td><b>Items Total</b></td>
 </tr>
 <% @users.each do |user| %>
 	<tr>
 	<td><%= link_to user.user_id, user_path(user) %></td>
 	<td><%= user.name %></td>
-
-	<td>
-
-	</td>
+	<td><%= user.items.count %></td>
 	</tr>
 <% end %>
 </table>
+<%= will_paginate @locations %>

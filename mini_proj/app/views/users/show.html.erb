@@ -3,8 +3,8 @@
 <h4>Recommended Products</h4>
 <table border=2 padding=10px>
 	<tr>
-		<th>Item ID</th>
-		<th>Item name</th>
+		<th>Item</th>
+		<th>Name</th>
 		<th>Categories</th>
 	</tr>
 	<% @recommended_items.first(5).each do |item| %>
@@ -17,15 +17,21 @@
 </table>
 
 <h4>Purchases</h4>
-<p>
-	<ul>
-	<% @items.each do |item| %>
-		<li><%= item.item_id %>&emsp;
-			<%= item.name %>:
+<table border=2 padding=10px>
+	<tr>
+		<th>Item</th>
+		<th>Name</th>
+		<th>Categories</th>
+	</tr>
+	<% @items.uniq.each do |item| %>
+		<tr>
+		<td><%= item.item_id %></td>
+		<td><%= item.name %></td>
+		<td>
 			<% item.categories.each do |category| %>
 				<%= category.name %>
 			<% end %>
-		</li>
+		</td>
+		</tr>
 	<% end %>
-	</ul>
-</p>
+</table>
