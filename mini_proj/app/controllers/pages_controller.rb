@@ -4,7 +4,4 @@ class PagesController < ApplicationController
 		@item_count = Item.count
 		@categories_count = Category.count
 	end
-	def admin
-		@users = User.all
-	end
 end

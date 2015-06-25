@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 	def index
 		@users = User.all
 			.paginate(:page => params[:page], :per_page => params[:per])
-		@null_category = Category.none
+		byebug
 	end
 	def show
 		@user = User.find(params[:id])
@@ -16,5 +16,6 @@ class UsersController < ApplicationController
 			.sort {|a,b| b[1] <=> a[1]}
 		# remove the items that were already purchased
 		@recommended_items.reject!{|pair| @items.include?(pair[0])}
+		@top_n = params[:top].to_i || 5
 	end
 end

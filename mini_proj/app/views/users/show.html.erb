@@ -1,13 +1,13 @@
 <h3>User: <%= @user.name %></h3>
 
-<h4>Recommended Products</h4>
+<h4>Top <%= @top_n %> Recommended Products</h4>
 <table border=2 padding=10px>
 	<tr>
 		<th>Item</th>
 		<th>Name</th>
 		<th>Categories</th>
 	</tr>
-	<% @recommended_items.first(5).each do |item| %>
+	<% @recommended_items.first(@top_n).each do |item| %>
 	<tr>
 		<td><%= item[0].item_id %></td>
 		<td><%= item[0].name %></td>
