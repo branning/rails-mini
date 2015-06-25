@@ -5,16 +5,9 @@ class UsersController < ApplicationController
 	def show
 		@user = User.find(params[:id])
 		@items = @user.items
-		@categories = @items.inject({}) do |categories, item|
-			categories[item] = item.categories
-			categories
-		end
-		# add it if any category overlaps
-		@recommendations = []
-		Item.all do |item|
-			@recommendations << item if item.categories.intersect(@categories)
-										#and item not in @items
-		end
-
+		# lambdas on rails, amirite
+		@recommended_items = @items.map {|item| item.categories}.flatten.uniq.map {|category| category.items }.flatten.group_by{|item| item}.map {|k, v| [k, v.length]}.sort {|a,b| b[1] <=> a[1]}
+		# remove the items that were already purchased
+		@recommended_items.reject!{|pair| @items.include?(pair[0])}
 	end
 end

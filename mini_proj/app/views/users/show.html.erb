@@ -7,11 +7,11 @@
 		<th>Item name</th>
 		<th>Categories</th>
 	</tr>
-	<%= @recommendations.each do |r| %>
+	<% @recommended_items.first(5).each do |item| %>
 	<tr>
-		<td><%= r.item_id %></td>
-		<td><%= r.name %></td>
-		<td><%= r.categories.join(',') %></td>
+		<td><%= item[0].item_id %></td>
+		<td><%= item[0].name %></td>
+		<td><%= item[0].categories.map{|c| c.name}.join(',') %></td>
 	</tr>
 	<% end %>
 </table>
@@ -20,11 +20,12 @@
 <p>
 	<ul>
 	<% @items.each do |item| %>
-		<li><%= item.name %>:
-			<% @categories[item].each do |category| %>
-			<%= category.name %>
+		<li><%= item.item_id %>&emsp;
+			<%= item.name %>:
+			<% item.categories.each do |category| %>
+				<%= category.name %>
+			<% end %>
 		</li>
 	<% end %>
 	</ul>
 </p>
-<% end %>

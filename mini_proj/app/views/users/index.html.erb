@@ -14,15 +14,9 @@
 	<tr>
 	<td><%= link_to user.user_id, user_path(user) %></td>
 	<td><%= user.name %></td>
+
 	<td>
-		<% user.items.each do |item| %>
-		<%= item.name %>
-		&#40;
-			<% item.categories.each do |category| %>
-			<%= category.name %>
-			<% end %>
-		&#41;
-		<% end %>
+
 	</td>
 	</tr>
 <% end %>
