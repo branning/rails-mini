@@ -1,0 +1,19 @@
+<h2>Product Recommendations</h2>
+
+<p>Our customers have purchased some stuff so far, what should we suggest that
+		they buy next? Our first attempt will work this way:
+		<ol>
+			<li>Find all existing item purchases by the user</li>
+			<li>Collect all unique categories for those items</li>
+			<li>Order the unpurchased by the number of categories in common with
+					the collection of existing categories.</li>
+		</ol>
+</p>
+
+<p>Users (<%= @user_count %> total) purchase zero to many Items (<%= @item_count %> total) which have one or more Categories (<%= @category_count %> total).
+	 	Our data is organized in 5 relations, as follows:
+</p>
+
+<p><img src="mini_proj_er_diagram.jpg"></p>
+
+<p>Click <%= link_to "Users", "/users" %> to get started</p>

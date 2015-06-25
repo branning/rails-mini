@@ -1,8 +1,30 @@
-<p><%= @user.name %></p>
-<% @items.each do |item| %>
-<p><%= item.name %>: 
-	<% item.categories.each do |category| %>
-		<%= category.name %>
+<h3>User: <%= @user.name %></h3>
+
+<h4>Recommended Products</h4>
+<table border=2 padding=10px>
+	<tr>
+		<th>Item ID</th>
+		<th>Item name</th>
+		<th>Categories</th>
+	</tr>
+	<%= @recommendations.each do |r| %>
+	<tr>
+		<td><%= r.item_id %></td>
+		<td><%= r.name %></td>
+		<td><%= r.categories.join(',') %></td>
+	</tr>
 	<% end %>
+</table>
+
+<h4>Purchases</h4>
+<p>
+	<ul>
+	<% @items.each do |item| %>
+		<li><%= item.name %>:
+			<% @categories[item].each do |category| %>
+			<%= category.name %>
+		</li>
+	<% end %>
+	</ul>
 </p>
 <% end %>

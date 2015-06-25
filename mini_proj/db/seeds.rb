@@ -16,7 +16,6 @@ c1 = Category.create(category_id: 1, name: "Unicycles")
 c2 = Category.create(category_id: 2, name: "Motorized Bicycles (DIY)")
 c3 = Category.create(category_id: 3, name: "Women's Beach Cruisers")
 
-
 ic1 = ItemCategory.create(item_id: 1, category_id: 1)
 ic1 = ItemCategory.create(item_id: 1, category_id: 2)
 ic1 = ItemCategory.create(item_id: 2, category_id: 1)
