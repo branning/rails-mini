@@ -35,7 +35,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Devise for authentication
 gem 'devise'
 
+# Use will_paginate for paginating results - Users table is 17k rows
 gem 'will_paginate-bootstrap'
+
+# required for Heroku deployment
+gem 'puma'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
